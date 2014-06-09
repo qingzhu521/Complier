@@ -1,0 +1,26 @@
+{
+	f = fopen("in.txt", "r");
+	bool end = 0;int line = 1;
+	get(buf,f);
+	char *iter = buf;
+	while(1){
+		switch (*iter) {
+			case eof:
+				get(buf,f);
+				iter = buf;
+				break;
+			case 0:
+				end = 1;
+				break;
+			default:	
+				cout<<*iter;
+				recogenizer(h, t, iter, line);
+		}
+		if(end){
+			cout<<endl;
+			break;
+		}
+	}
+	print_list(h);
+	return 0;
+}
