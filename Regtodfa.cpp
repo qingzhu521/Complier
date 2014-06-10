@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <algorithm>
@@ -8,10 +8,15 @@
 #include <map>
 using namespace std;
 string s;
-
+/**
+中缀表达式建树
+叶子节点 字母节点和括号节点
+进入时要么是空树的 要么在符号右子树上 合法中缀表达式不可能二元运算符在空树时出现
+*后置一元运算符 ()都是一类运算符 非二元运算符
+*/
 struct Node{
 	bool leaf;
-	char x;//璁＄畻鑺傜偣 鍙跺瓙鑺傜偣
+	char x;//计算节点 叶子节点
 	Node *s[2];
 	Node(bool i,char b){
 		leaf = i;x = b;
@@ -52,15 +57,15 @@ void join(Node *tmp){
 		root = tmp;
 	} else{
 		if(tmp -> leaf || tmp -> x == 'B'){
-			if((root -> x == '|' || root -> x == '.') && root -> s[1] == 0){//2鍏冭繍绠楃
+			if((root -> x == '|' || root -> x == '.') && root -> s[1] == 0){//2元运算符
 				root -> s[1] = tmp;
 			} else{
-				Node *tmproot = new Node(0,'.');//鍓嶉潰鏄悗缃竴鍏冭繍绠楃鎴栬�鏄彾瀛�
+				Node *tmproot = new Node(0,'.');//前面是后置一元运算符或者是叶子
 				tmproot -> s[0] = root;
 				tmproot -> s[1] = tmp;
 				root = tmproot;
 			}
-		} else if(tmp -> x == '|' || tmp -> x == '*'){//*鐨勫姞鍏�
+		} else if(tmp -> x == '|' || tmp -> x == '*'){//*的加入
 			tmp -> s[0] = root;
 			root = tmp;
 		} 	
@@ -146,7 +151,7 @@ void bfso(GN *head){
 			GN *dis = iter -> d;
 			cout<<x -> n<<"->"<<dis -> n<<" [label = \""<<iter -> type<<"\"]"<<endl;
 			if(in[dis -> n] == 0){
-				in[dis -> n] = 1;//鎺у埗鍏ュ彛(QwQ)
+				in[dis -> n] = 1;//控制入口(QwQ)
 				q.push(dis);
 			}
 		}
@@ -277,7 +282,7 @@ void convertnfa2dfa(GN *head){
 	}
 }
 
-int regtodfs(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	cin>>s;
 	int len = s.size();
 	for (int i = 0; i < len; i++){
@@ -290,7 +295,7 @@ int regtodfs(int argc, char *argv[]) {
 		} else if(s[i] == ')'){
 			Node *tmproot = rootstack.top();
 			rootstack.pop();
-			//涓嶆槸鍦ㄥ湪杩欎釜涓婂氨鏄湪鍙冲瓙鏍戜笂
+			//不是在在这个上就是在右子树上
 			if(tmproot -> x == 'B'){
 				tmproot -> s[0] = root;
 				root = tmproot;
@@ -313,4 +318,3 @@ int regtodfs(int argc, char *argv[]) {
 	convertnfa2dfa(head);
 	return 0;
 }
-*/
