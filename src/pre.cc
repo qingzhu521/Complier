@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <vector>
 using namespace std;
-int pre(int argc, char *argv[]) {
+int pre() {
 	freopen("in.txt", "r", stdin);
 	freopen("out.txt", "w", stdout);
 	int state = 0;char c;

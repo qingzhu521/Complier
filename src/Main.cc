@@ -1,5 +1,4 @@
-#include "Token.h"
-//#include "Praser.h:
+#include "Praser.h"
 using namespace std;
 FILE *f;
 char buf[4096];
@@ -19,7 +18,10 @@ int main(int argc, char *argv[]) {
 				end = 1;
 				break;
 			default:	
-				recogenizer(h, t, iter, line);
+				if(recogenizer(h, t, iter, line) == ERROR){
+					cout<<endl;
+				}
+				break;
 		}
 		if(end){
 			cout<<endl;
@@ -27,5 +29,6 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	print_list(h);
+	ll_praser(h);
 	return 0;
 }

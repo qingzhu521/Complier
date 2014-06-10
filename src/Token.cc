@@ -175,8 +175,10 @@ void print_list(Node *h){
 			case SEMICOLON:cout<<';'<<endl;break;
 			default:{
 				cout<<(char *)iter -> d;
-			}cout<<" ";
+				break;
+			}
 		}
+		cout<<" ";
 
 	}
 }
