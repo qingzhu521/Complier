@@ -13,7 +13,7 @@ const int IF = 3;
 const int WHILE = 4;
 const int ELSE = 5;
 const int BOOLOP = 6;
-const int EQU = 7;
+const int EQU = 7;//assign
 const int ADD = 8;
 const int SUB = 9;
 const int MUL = 10;
@@ -22,10 +22,10 @@ const int LLB = 12;
 const int LRB = 13;
 const int BLB = 14;
 const int BRB = 15;
-const int ID = 16; //identifier
+const int IDENTIFIER = 16; //identifier
 const int SEMICOLON = 17;
-const int INT_T = 18;
-const int DOUBLE_T = 19;
+const int MLB = 20;
+const int MRB = 21;
 
 void get(char *buf,FILE *f);
 const char key[100][10] ={
@@ -42,7 +42,7 @@ const char key[100][10] ={
 };
 
 struct Node{
-	int t; //type
+	int t; //type ---- tag
 	int l; //line
 	void *d;//date
 	Node *n;//next

@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	print_list(h);
-	ll_praser(h);
+	if(!ll_praser(h)){
+		cout<<"error"<<endl;
+	}
 	return 0;
 }

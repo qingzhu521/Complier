@@ -4,6 +4,5 @@
 #include <stack>
 
 int ll_praser(Node *h);
-typedef int STATE;
 
 #endif

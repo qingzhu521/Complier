@@ -70,7 +70,7 @@ int recogenizer(Node *&h, Node *&t, char *&iter, int &line){
 		s[w] = 0;
 		if(!strcmp(s, "if")){
 			add_to_list(h, t, s, IF, line); 
-		} else if(!strcmp(s, "WHILE")){
+		} else if(!strcmp(s, "while")){
 			add_to_list(h, t, s, WHILE, line);
 		} else if(!strcmp(s, "else")){
 			add_to_list(h, t, s, ELSE, line);
@@ -79,7 +79,7 @@ int recogenizer(Node *&h, Node *&t, char *&iter, int &line){
 		} else if(!strcmp(s, "double")){
 			add_to_list(h, t, s, DOUBLE_T, line);
 		} else{
-			add_to_list(h, t, s, ID, line);
+			add_to_list(h, t, s, IDENTIFIER, line);
 		}
 	} else if(*iter == '+'){
 		add_to_list(h, t, NULL, ADD, line);
@@ -133,15 +133,19 @@ int recogenizer(Node *&h, Node *&t, char *&iter, int &line){
 			x[0] = '!'; x[1] = '='; x[2] = 0;
 			add_to_list(h, t, x, BOOLOP, line);
 		}
-	} else if(*iter =='(' || *iter == ')' || *iter == '{' || *iter == '}'){
+	} else if(*iter =='(' || *iter == ')' || *iter == '{' || *iter == '}' || *iter == '[' || *iter == ']'){
 		if(*iter =='('){
 			add_to_list(h, t, NULL, LLB, line);
 		} else if(*iter == ')'){
 			add_to_list(h, t, NULL, LRB, line);
 		} else if(*iter == '{'){
 			add_to_list(h, t, NULL, BLB, line);
-		} else{
+		} else if(*iter == '}'){
 			add_to_list(h, t, NULL, BRB, line);
+		} else if(*iter == '['){
+			add_to_list(h, t, NULL, MLB, line);
+		} else{
+			add_to_list(h, t, NULL, MRB, line);
 		}
 		iter++;
 	} else if(*iter == '\r' || *iter == '\n'){
@@ -171,6 +175,8 @@ void print_list(Node *h){
 			case LRB:cout<<')';break;
 			case BLB:cout<<'{'<<endl;break;
 			case BRB:cout<<'}'<<endl;break;
+			case MLB:cout<<'[';break;
+			case MRB:cout<<']';break;
 			case EQU:cout<<'=';break;
 			case SEMICOLON:cout<<';'<<endl;break;
 			default:{
