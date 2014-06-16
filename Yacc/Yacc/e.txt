@@ -1,0 +1,4 @@
+{
+if (n<2)  then  else n=n-2.E
+}
+}

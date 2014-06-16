@@ -1,0 +1,1 @@
+flex program.l && yacc program.y && gcc lex.yy.c y.tab.c y.tab.h
