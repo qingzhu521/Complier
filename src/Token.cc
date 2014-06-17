@@ -74,10 +74,6 @@ int recogenizer(Node *&h, Node *&t, char *&iter, int &line){
 			add_to_list(h, t, s, WHILE, line);
 		} else if(!strcmp(s, "else")){
 			add_to_list(h, t, s, ELSE, line);
-		} else if(!strcmp(s, "int")){
-			add_to_list(h, t, s, INT_T, line);
-		} else if(!strcmp(s, "double")){
-			add_to_list(h, t, s, DOUBLE_T, line);
 		} else{
 			add_to_list(h, t, s, IDENTIFIER, line);
 		}

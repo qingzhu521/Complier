@@ -23,16 +23,28 @@ int match(int t,Node *&cur){
 	}
 	return 0;
 }
-int decls(Node *&cur){
-	ok(match(IDENTIFIER, cur));
-	if(match(MLB,cur)){
-		
-	} else{
-		
+int match_not_move(int t, Node *&cur){
+	if(cur -> t == t){
+		return 1;
 	}
+	return 0;
+}
+int decls(Node *&cur){
+	
+}
+int arith(Node *&cur){
+
 }
 int stmt(Node *&cur){
-	
+	if(match_not_move(DEF, cur)){
+		decls(cur);
+	} else if(match_not_move(IDENTIFIER, cur)){
+		arith(cur);
+	} else if(match_not_move(IF, cur)){
+		ifstmt(cur);
+	} else if(match_not_move(WHILE, cur)){
+		whilestmt(cur);
+	}
 }
 int stmts(Node *&cur){
 	stmt(Node *&cur);
@@ -42,9 +54,9 @@ int stmts(Node *&cur){
 int block(Node *&cur){
 	cout<<"--------------block------------------";
 	ok(match(BLB, cur));
-	cout<<"--------------block -> decls --------";
-	ok(decls(cur));
-	cout<<"--------------decls -> block --------";
+	cout<<"--------------block -> stmts --------";
+	ok(stmts(cur));
+	cout<<"--------------stmts -> block --------";
 	ok(match(BRB, cur));
 }
 int ll_praser(Node *h){
