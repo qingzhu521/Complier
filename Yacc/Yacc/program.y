@@ -108,7 +108,7 @@ sCount++;
 ;
 
 assgstmt: ID '=' arithexpr  ';'
-{ printf ("%80s", "assgstmt->ID = arithexpr ; \n");
+{ printf ("%80s", "assgs tmt->ID = arithexpr ; \n");
 s[sCount] = "->assgstmt:ID = arithexpr ";
 sCount++; 
  }
