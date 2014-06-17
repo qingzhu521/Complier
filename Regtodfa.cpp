@@ -128,7 +128,7 @@ void bfs(GN *head){
 		if(x == 0)break;
 		Edge *iter = x->top;
 		for (; iter != 0; iter = iter -> nxt){
-			//cout<<iter<<" "<<iter -> d<<endl;
+			cout<<iter<<" "<<iter -> d<<endl;
 			GN *dis = iter -> d;
 			if(dis -> n == 0){
 				dis -> n = cnt; cnt++;
@@ -264,7 +264,6 @@ void convertnfa2dfa(GN *head){
 	State init;
 	init.pushback(1);
 	State s0 = eclosure(init);
-	
 	q.push(s0);
 	judge.insert(pair<State,int>(s0,scnt++));
 	while(!q.empty()){
@@ -275,10 +274,13 @@ void convertnfa2dfa(GN *head){
 				judge.insert(pair<State,int>(y,scnt++));
 				q.push(y);
 			}
-			x.show();cout<<" s"<<judge[x]<<" ";
+			x.show();
+			cout<<" s"<<judge[x]<<" ";
 			cout<<syb[i]<<" ";
-			y.show();cout<<" s"<<judge[y]<<endl;
+			y.show();
+			cout<<" s"<<judge[y]<<endl;
 		}
+		cout<<1<<endl;
 	}
 }
 
@@ -312,7 +314,7 @@ int main(int argc, char *argv[]) {
 	cout<<endl;
 	GN *head = 0,*tail = 0;
 	dfs(root,head,tail);
-	//cout<<head<<" "<<tail<<endl;
+	cout<<head<<" "<<tail<<endl;
 	bfs(head);
 	bfso(head);
 	convertnfa2dfa(head);
