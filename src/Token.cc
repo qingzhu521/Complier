@@ -159,14 +159,12 @@ int recogenizer(Node *&h, Node *&t, char *&iter, int &line){
 	return 0;
 }
 
-void print_list(Node *h){
-	Node *iter = h;
-	for (iter = h; iter != 0; iter = iter ->n){
+void print_list(Node *h, int num){
+	Node *iter = h;int i;
+	for (iter = h, i = 1; iter != 0 && (num > 100 ? 1:i <= num); iter = iter ->n ,i++){
 		switch(iter -> t){
-			case DOUBLE:
-			cout<<*(double*)iter -> d;break;
-			case LL:
-			cout<<*(long long *)iter -> d;break;
+			case DOUBLE:cout<<*(double*)iter -> d;break;
+			case LL:cout<<*(long long *)iter -> d;break;
 			case ADD:cout<<'+';break;
 			case SUB:cout<<'-';break;
 			case MUL:cout<<'*';break;
@@ -185,7 +183,6 @@ void print_list(Node *h){
 			}
 		}
 		cout<<" ";
-
 	}
 }
 

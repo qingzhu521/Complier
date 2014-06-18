@@ -1,26 +1,13 @@
 {
-	f = fopen("in.txt", "r");
-	bool end = 0;int line = 1;
-	get(buf,f);
-	char *iter = buf;
-	while(1){
-		switch (*iter) {
-			case eof:
-				get(buf,f);
-				iter = buf;
-				break;
-			case 0:
-				end = 1;
-				break;
-			default:	
-				cout<<*iter;
-				recogenizer(h, t, iter, line);
-		}
-		if(end){
-			cout<<endl;
-			break;
-		}
+	int a = 1;
+	int b = 2;
+	
+	if(a > b){
+		a = a + 2;
+	} else{
+		a = a + 1;
 	}
-	print_list(h);
-	return 0;
+	while(b < a){
+		b = b+ 1;
+	}
 }

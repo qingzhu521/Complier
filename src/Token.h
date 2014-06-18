@@ -23,7 +23,7 @@ const int LRB = 13;
 const int BLB = 14;
 const int BRB = 15;
 const int IDENTIFIER = 16; //identifier
-const int DEF = 18
+const int DEF = 18;
 const int SEMICOLON = 17;
 const int MLB = 20;
 const int MRB = 21;
@@ -61,5 +61,5 @@ struct Node{
 };
 
 int recogenizer(Node *&h, Node *&t, char *&iter, int &line);
-void print_list(Node *h);
+void print_list(Node *h,int num);
 #endif

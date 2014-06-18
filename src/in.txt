@@ -1,3 +1,13 @@
-hfjksfjksdhf
-sakldfjalksdjf
-sadhfkash
+{
+	int a = 1;
+	int b = 2;
+	//woca QwQ 终于做完了。
+	if(a > b){
+		a = a + 2;
+	} else{
+		a = a + 1;
+	}
+	while(b < a){
+		b = b+ 1;
+	}
+}

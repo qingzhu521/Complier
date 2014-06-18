@@ -4,7 +4,7 @@ FILE *f;
 char buf[4096];
 Node *h,*t;
 int main(int argc, char *argv[]) {
-	f = fopen("C:\\Users\\Skullpirate\\Documents\\GitHub\\Complier\\src\\out.txt", "r");
+	f = fopen("./out.txt", "r");
 	bool end = 0;int line = 1;
 	get(buf,f);
 	char *iter = buf;
@@ -28,9 +28,12 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 	}
-	print_list(h);
-	if(!ll_praser(h)){
-		cout<<"error"<<endl;
+	print_list(h,200);
+	Node *tmp = h;
+	if(!ll_praser(tmp)){
+		cout<<"error in "<< tmp -> l <<" ";
+		print_list(tmp,1);
 	}
+	cout<<"over"<<endl;
 	return 0;
 }
