@@ -27,6 +27,7 @@ int recogenizer(Node *&h, Node *&t, char *&iter, int &line){
 			w++,iter++;
 		}
 		if(isalpha(*iter) && (*iter != 'E') && (*iter != 'e')){
+			cout<<1<<endl;
 			return ERROR;
 		} else if(*iter == 'E' || *iter == 'e'){
 			iter++;

@@ -1,13 +1,19 @@
 {
-	int a = 1;
+	int a = 1e3;
 	int b = 2;
 	
 	if(a > b){
 		a = a + 2;
 	} else{
-		a = a + 1;
+		a = a + 1
 	}
 	while(b < a){
 		b = b+ 1;
+	}
+	while(b < a){
+		a = a + 1;
+	}
+	while(a > b){
+		b = b + 1;
 	}
 }
